@@ -11,6 +11,7 @@ static NSString *const CHANNEL_NAME = @"plugins.flutter.io/shared_preferences_io
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar> *)registrar {
   FlutterMethodChannel *channel = [FlutterMethodChannel methodChannelWithName:CHANNEL_NAME
                                                               binaryMessenger:registrar.messenger];
+  [registrar addMethodCallDelegate:instance channel:channel];
   [channel setMethodCallHandler:^(FlutterMethodCall *call, FlutterResult result) {
     NSString *method = [call method];
     NSDictionary *arguments = [call arguments];
